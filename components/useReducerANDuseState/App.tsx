@@ -1,4 +1,4 @@
-import React, {useReducer, useState, useRef} from 'react'
+import React, {useReducer, useState} from 'react'
 import { StyleSheet, Text, Button, View, TextInput } from 'react-native';
 
 const listener = (state: any, action: any) =>{
@@ -20,30 +20,16 @@ export default function App() {
    dispatch({type:"add-new-task", inputValue})
   }
 
-  const handleClean = () =>{
-    dispatch({type:"add-new-task", inputValue})
-   }
-
   return (
     <View style={styles.container}>
 
       <View style={styles.inline}>
-
         <TextInput 
           style={styles.enter}
           value={inputValue}
           onChangeText={(text)=> setInputValue(text)}
-        />
-
-        <Button 
-          title='ADICIONAR TAREFA' 
-          onPress={handleAddTask} 
-        />
-        <Button 
-          title='limpar' 
-          onPress={handleClean}
-        />
-
+        ></TextInput>
+        <Button title='ADICIONAR TAREFA' onPress={handleAddTask} ></Button>
       </View>
 
       {state.tasks.map((task:any) => <Text>{task.name}</Text>)}
